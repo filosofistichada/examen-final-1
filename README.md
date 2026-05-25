@@ -1,4 +1,5 @@
 # DragonDex - Examen Final
+# Sofía Soto Guerrero 🐉
 
 Catálogo de dragones usando PokéAPI.
 
@@ -7,26 +8,10 @@ Catálogo de dragones usando PokéAPI.
 2. `npm install`
 3. `npm run dev`
 
-## Estructura
-El proyecto ya tiene la configuración base con Vite, React Router, Tailwind CSS y Font Awesome.
-Debes implementar la lógica en los archivos existentes según las instrucciones del examen.
+## Comentarios varios 
+¡Hola, profe! Espero que estés muy bien y estés teniendo un muy draco-feliz tiempo calificando :PPP
 
-# Use of fontAwesome
-```<i className="fas fa-thumbs-up fa-5x"></i>```
-All icons: https://fontawesome.com/search?ic=free-collection 
+He de contarte que el proyecto no me funcionó por el tema de la versión de Node, intenté cambiarla en el tiempo del examen, pero los comandos no me funcionaban o no se me descargó bien, por lo que no te puedo garantizar que esté funcionando del todo bien... 🐲
 
-# Use of react Icons
-example usage
+...hago un acto de fe de que sí funciona, porque lo hice casi 100% basada en mi pre-parcial que sí me funcionó bastante bastante bien, así que cruzo dedos para que todos esos hechizos de ayer trasciendan y su magia le llegue a este examen 🪄 ⋆°.☾⋆.ೃ࿔*:⋆
 
-```
-import { FaBeer } from "react-icons/fa";
-
-function Question() {
-  return (
-    <h3>
-      Lets go for a <FaBeer />?
-    </h3>
-  );
-}
-```
-All icons: https://react-icons.github.io/react-icons/

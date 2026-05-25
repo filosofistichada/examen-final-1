@@ -4,52 +4,40 @@ import DragonList from '../components/DragonList'
 import Loader from '../components/Loader'
 import ErrorMessage from '../components/ErrorMessage'
 import EmptyState from '../components/EmptyState'
-import { fetchDragons } from '../services/dragonService'
+import { fetchDragons } from '../services/DragonService'
 
 export default function Home() {
-    const [dragons, setDragons] = useState([])
+    const [dragons, setDragons] = useState<any[]>([])
     const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
-    const [searchTerm, setSearchTerm] = useState('')
+    const [error, setError] = useState<string | null>(null)
+    const [search, setSearch] = useState('')
 
-    // Cargar dragones al montar
     useEffect(() => {
-        const loadDragons = async () => {
-            try {
-                setLoading(true)
-                const spellsData = await fetchDragons()
-                setDragons(spellsData)
-                setError(null)
-            } catch (error) {
-                setError('Error al obtener los hechizos')
-            } finally {
+        // Llama a fetchDragons() al montar el componente [cite: 976]
+        fetchDragons()
+            .then(data => {
+                setDragons(data)
                 setLoading(false)
-            }
-        }
-        
-        loadDragons()
+            })
+            .catch(err => {
+                setError(err.message)
+                setLoading(false)
+            })
     }, [])
 
-    // Filtrar dragones
-    const filteredDragons = dragons.filter(dragon => {
-        const dragonName = dragon.name || "";
-        const search = searchTerm || "";
-    return dragonName.toLowerCase().includes(search.toLowerCase());
-  });
+    // Filtra los dragones cuyo nombre incluya el texto de búsqueda (minúsculas) [cite: 984]
+    const filteredDragons = dragons.filter(d =>
+        d.name.toLowerCase().includes(search.toLowerCase())
+    )
 
     return (
-        <div className="p-4 max-w-7xl mx-auto">
+        <div className="p-4">
             <SearchBar onSearch={setSearch} />
-            
-            {/* Manejo de estados */}
+            {/* Manejo de estados de carga, error y lista vacía [cite: 978, 979, 980, 981] */}
             {loading && <Loader />}
             {error && <ErrorMessage message={error} />}
-            {!loading && !error && filteredDragons.length === 0 && (
-                <EmptyState message="No hay dragones que coincidan con tu búsqueda." />
-            )}
-            {!loading && !error && filteredDragons.length > 0 && (
-                <DragonList dragons={filteredDragons} />
-            )}
+            {!loading && !error && filteredDragons.length === 0 && <EmptyState />}
+            {!loading && !error && filteredDragons.length > 0 && <DragonList dragons={filteredDragons} />}
         </div>
     )
 }

@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import { FavoritesProvider } from './context/FavoritesContext'
 import Home from './pages/Home'
-// Asumo que tienes creado el componente Favorites.tsx (similar al repo anterior)
 import Favorites from './pages/Favorites' 
 import DragonDetail from './pages/DragonDetail'
 import './App.css'
