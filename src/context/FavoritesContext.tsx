@@ -5,21 +5,30 @@ const FavoritesContext = createContext(null)
 export function FavoritesProvider({ children }) {
   const [favorites, setFavorites] = useState([])
 
-  // TODO: Implementar función addFavorite(dragon)
-  // - Si el dragón ya está en favoritos, no hacer nada
-  // - Agregar el dragón al array de favoritos
+  const addFavorite = (dragon) => {
+    setFavorites((prev) => {
+      // Si el dragón ya está en favoritos, no hacer nada
+      if (prev.some((d) => d.name === dragon.name)) return prev;
+      // Agregar el dragón al array de favoritos
+      return [...prev, dragon];
+    })
+  }
 
-  // TODO: Implementar función removeFavorite(dragonName)
-  // - Filtrar el dragón del array por nombre
+  const removeFavorite = (dragonName) => {
+    // Filtrar el dragón del array por nombre
+    setFavorites((prev) => prev.filter((d) => d.name !== dragonName))
+  }
 
-  // TODO: Implementar función isFavorite(dragonName)
-  // - Retornar true si el dragón ya está en favoritos
+  const isFavorite = (dragonName) => {
+    // Retornar true si el dragón ya está en favoritos
+    return favorites.some((d) => d.name === dragonName)
+  }
 
   const value = {
     favorites,
-    // addFavorite,     // ← reemplazar con función real
-    // removeFavorite,  // ← reemplazar con función real
-    // isFavorite,      // ← reemplazar con función real
+    addFavorite,
+    removeFavorite,
+    isFavorite,
   }
 
   return (
