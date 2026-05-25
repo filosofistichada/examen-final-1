@@ -1,5 +1,5 @@
 # DracoDex! - Sofía Soto Guerrero *ੈ🐉 ༘⋆໋✧˚
-## Bienvenidos, aventureros, a La Guarida del Dragón, Raaaaaaah!!
+### Bienvenidos, aventureros, a La Guarida del Dragón, Raaaaaaah!!
 
 ## ⋆༺𓆩⚔𓆪༻⋆ Instalación ⋆༺𓆩⚔𓆪༻⋆
 1. Clonar el repositorio
